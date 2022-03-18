@@ -1,5 +1,7 @@
 import 'package:cadastro_contatos/model/endereco.dart';
+import 'package:cadastro_contatos/model/enderecos_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TelaCadastroEnderecos extends StatefulWidget {
   const TelaCadastroEnderecos({Key? key}) : super(key: key);
@@ -209,18 +211,10 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
                         cidade: _cidade!,
                         estado: _estado!);
 
-                    Endereco endereco2 = Endereco(
-                        nome: '_nome!',
-                        telefone: '_telefone!',
-                        cep: '_cep!',
-                        logradouro: '_logradouro!',
-                        numero: '_numero!',
-                        bairro: '_bairro!',
-                        complemento: '_complemento!',
-                        cidade: '_cidade!',
-                        estado: "_estado!");
+                    Provider.of<EnderecosData>(context, listen: false)
+                        .adicionarEndereco(endereco);
 
-                    print(endereco);
+                    Navigator.pop(context);
                   },
                   child: Text('SALVAR'),
                 ),
