@@ -3,7 +3,7 @@ class Endereco {
   String telefone;
   String cep;
   String logradouro;
-  int numero;
+  String numero;
   String bairro;
   String complemento;
   String cidade;

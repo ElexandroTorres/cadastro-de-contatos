@@ -1,3 +1,4 @@
+import 'package:cadastro_contatos/telas/tela_cadastro_enderecos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,73 +13,7 @@ class CadastroContatos extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cadastro Contatos',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Tela Cadastro'),
-        ),
-        body: Column(
-          children: [
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Nome',
-              ),
-              keyboardType: TextInputType.text,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Telefone',
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'CEP',
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Logradouro',
-              ),
-              keyboardType: TextInputType.text,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Numero',
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Bairro',
-              ),
-              keyboardType: TextInputType.text,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Complemento',
-              ),
-              keyboardType: TextInputType.text,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Cidade',
-              ),
-              keyboardType: TextInputType.text,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Estado',
-              ),
-              keyboardType: TextInputType.text,
-            ),
-          ],
-        ),
-      ),
+      home: TelaCadastroEnderecos(),
     );
   }
 }
-
-//Telefone deve conter 14 caracteres 84 988232989
-//Logradouro, no minimo 10 e no maximo 100
-//CEP 8 caracteres
