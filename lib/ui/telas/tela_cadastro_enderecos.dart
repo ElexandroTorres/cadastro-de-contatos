@@ -19,7 +19,7 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
   String? _cidade;
   String? _estado;
 
-  var _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
