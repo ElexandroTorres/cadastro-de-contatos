@@ -1,7 +1,9 @@
 import 'package:cadastro_contatos/model/endereco.dart';
 import 'package:cadastro_contatos/model/enderecos_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 class TelaCadastroEnderecos extends StatefulWidget {
   const TelaCadastroEnderecos({Key? key}) : super(key: key);
@@ -57,8 +59,8 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
                 SizedBox(height: 8.0),
                 TextFormField(
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'É necessario inserir um numero de telefone';
+                    if (value!.length < 14) {
+                      return 'É necessario inserir um numero de telefone valido';
                     }
                     return null;
                   },
@@ -70,13 +72,18 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
                     labelText: 'Telefone',
                     border: OutlineInputBorder(),
                   ),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: [
+                    MaskedInputFormatter('(##)#####-####'),
+                  ],
                 ),
                 SizedBox(height: 8.0),
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'É necessario inserir o CEP';
+                    } else if (value.length < 8) {
+                      return 'Digite um CEP valido';
                     }
                     return null;
                   },
@@ -95,6 +102,10 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'É necessario inserir o logradouro';
+                    } else if (value.length < 10) {
+                      return 'Tamanho minimo de 10 caractres';
+                    } else if (value.length > 100) {
+                      return 'Tamanho maximo de 100 caracteres';
                     }
                     return null;
                   },
@@ -106,7 +117,8 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
                     labelText: 'Lograadouro',
                     border: OutlineInputBorder(),
                   ),
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.multiline,
+                  maxLength: 100,
                 ),
                 SizedBox(height: 8.0),
                 TextFormField(
@@ -120,7 +132,7 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
                     _numero = value;
                   },
                   decoration: InputDecoration(
-                    hintText: 'Digite o numero de telefone',
+                    hintText: 'Digite o numero',
                     labelText: 'Numero',
                     border: OutlineInputBorder(),
                   ),
@@ -226,7 +238,3 @@ class _TelaCadastroEnderecosState extends State<TelaCadastroEnderecos> {
     );
   }
 }
-
-//Telefone deve conter 14 caracteres 84 988232989
-//Logradouro, no minimo 10 e no maximo 100
-//CEP 8 caracteres

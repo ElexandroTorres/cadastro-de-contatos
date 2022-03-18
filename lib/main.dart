@@ -17,6 +17,7 @@ class CadastroContatos extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => EnderecosData(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Cadastro Contatos',
         home: TelaListaEnderecos(),
       ),
